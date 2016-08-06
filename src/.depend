@@ -1,0 +1,115 @@
+location.cmo :
+location.cmx :
+types.cmo : location.cmo
+types.cmx : location.cmx
+auxl.cmo : types.cmo location.cmo
+auxl.cmx : types.cmx location.cmx
+merge.cmo : types.cmo location.cmo auxl.cmo merge.cmi
+merge.cmx : types.cmx location.cmx auxl.cmx merge.cmi
+global_option.cmo : types.cmo
+global_option.cmx : types.cmx
+grammar_lexer.cmo : location.cmo grammar_parser.cmi auxl.cmo
+grammar_lexer.cmx : location.cmx grammar_parser.cmx auxl.cmx
+grammar_parser.cmi : types.cmo
+grammar_parser.cmo : types.cmo location.cmo auxl.cmo grammar_parser.cmi
+grammar_parser.cmx : types.cmx location.cmx auxl.cmx grammar_parser.cmi
+version.cmo :
+version.cmx :
+grammar_pp.cmo : types.cmo location.cmo global_option.cmo auxl.cmo
+grammar_pp.cmx : types.cmx location.cmx global_option.cmx auxl.cmx
+parse_table.cmo :
+parse_table.cmx :
+glr.cmo : parse_table.cmo
+glr.cmx : parse_table.cmx
+new_term_parser.cmo : types.cmo parse_table.cmo merge.cmi grammar_pp.cmo \
+    global_option.cmo auxl.cmo
+new_term_parser.cmx : types.cmx parse_table.cmx merge.cmx grammar_pp.cmx \
+    global_option.cmx auxl.cmx
+term_parser.cmo : types.cmo parse_table.cmo new_term_parser.cmo location.cmo \
+    grammar_pp.cmo glr.cmo global_option.cmo auxl.cmo term_parser.cmi
+term_parser.cmx : types.cmx parse_table.cmx new_term_parser.cmx location.cmx \
+    grammar_pp.cmx glr.cmx global_option.cmx auxl.cmx term_parser.cmi
+dependency.cmo : types.cmo auxl.cmo dependency.cmi
+dependency.cmx : types.cmx auxl.cmx dependency.cmi
+bounds.cmo : types.cmo merge.cmi location.cmo grammar_pp.cmo auxl.cmo \
+    bounds.cmi
+bounds.cmx : types.cmx merge.cmx location.cmx grammar_pp.cmx auxl.cmx \
+    bounds.cmi
+context_pp.cmo : types.cmo term_parser.cmi grammar_pp.cmo dependency.cmi \
+    bounds.cmi auxl.cmo
+context_pp.cmx : types.cmx term_parser.cmx grammar_pp.cmx dependency.cmx \
+    bounds.cmx auxl.cmx
+grammar_typecheck.cmo : types.cmo term_parser.cmi merge.cmi location.cmo \
+    grammar_pp.cmo dependency.cmi context_pp.cmo auxl.cmo \
+    grammar_typecheck.cmi
+grammar_typecheck.cmx : types.cmx term_parser.cmx merge.cmx location.cmx \
+    grammar_pp.cmx dependency.cmx context_pp.cmx auxl.cmx \
+    grammar_typecheck.cmi
+transform.cmo : types.cmo grammar_pp.cmo dependency.cmi auxl.cmo \
+    transform.cmi
+transform.cmx : types.cmx grammar_pp.cmx dependency.cmx auxl.cmx \
+    transform.cmi
+substs_pp.cmo : types.cmo location.cmo grammar_pp.cmo dependency.cmi \
+    context_pp.cmo bounds.cmi auxl.cmo substs_pp.cmi
+substs_pp.cmx : types.cmx location.cmx grammar_pp.cmx dependency.cmx \
+    context_pp.cmx bounds.cmx auxl.cmx substs_pp.cmi
+subrules_pp.cmo : types.cmo location.cmo grammar_typecheck.cmi \
+    grammar_pp.cmo dependency.cmi context_pp.cmo bounds.cmi auxl.cmo \
+    subrules_pp.cmi
+subrules_pp.cmx : types.cmx location.cmx grammar_typecheck.cmx \
+    grammar_pp.cmx dependency.cmx context_pp.cmx bounds.cmx auxl.cmx \
+    subrules_pp.cmi
+embed_pp.cmo : types.cmo term_parser.cmi grammar_pp.cmo global_option.cmo \
+    bounds.cmi embed_pp.cmi
+embed_pp.cmx : types.cmx term_parser.cmx grammar_pp.cmx global_option.cmx \
+    bounds.cmx embed_pp.cmi
+defns.cmo : types.cmo transform.cmi term_parser.cmi subrules_pp.cmi \
+    location.cmo grammar_typecheck.cmi grammar_pp.cmo grammar_parser.cmi \
+    grammar_lexer.cmo global_option.cmo embed_pp.cmi dependency.cmi \
+    bounds.cmi auxl.cmo defns.cmi
+defns.cmx : types.cmx transform.cmx term_parser.cmx subrules_pp.cmx \
+    location.cmx grammar_typecheck.cmx grammar_pp.cmx grammar_parser.cmx \
+    grammar_lexer.cmx global_option.cmx embed_pp.cmx dependency.cmx \
+    bounds.cmx auxl.cmx defns.cmi
+ln_transform.cmo : types.cmo term_parser.cmi substs_pp.cmi grammar_pp.cmo \
+    dependency.cmi defns.cmi context_pp.cmo bounds.cmi auxl.cmo
+ln_transform.cmx : types.cmx term_parser.cmx substs_pp.cmx grammar_pp.cmx \
+    dependency.cmx defns.cmx context_pp.cmx bounds.cmx auxl.cmx
+coq_induct.cmo : types.cmo grammar_pp.cmo dependency.cmi bounds.cmi auxl.cmo \
+    coq_induct.cmi
+coq_induct.cmx : types.cmx grammar_pp.cmx dependency.cmx bounds.cmx auxl.cmx \
+    coq_induct.cmi
+system_pp.cmo : version.cmo types.cmo transform.cmi term_parser.cmi \
+    substs_pp.cmi subrules_pp.cmi ln_transform.cmo grammar_pp.cmo \
+    global_option.cmo embed_pp.cmi dependency.cmi defns.cmi coq_induct.cmi \
+    context_pp.cmo auxl.cmo system_pp.cmi
+system_pp.cmx : version.cmx types.cmx transform.cmx term_parser.cmx \
+    substs_pp.cmx subrules_pp.cmx ln_transform.cmx grammar_pp.cmx \
+    global_option.cmx embed_pp.cmx dependency.cmx defns.cmx coq_induct.cmx \
+    context_pp.cmx auxl.cmx system_pp.cmi
+lexyac_pp.cmo : version.cmo types.cmo auxl.cmo lexyac_pp.cmi
+lexyac_pp.cmx : version.cmx types.cmx auxl.cmx lexyac_pp.cmi
+align.cmo : types.cmo align.cmi
+align.cmx : types.cmx align.cmi
+main.cmo : version.cmo types.cmo term_parser.cmi system_pp.cmi substs_pp.cmi \
+    new_term_parser.cmo location.cmo lexyac_pp.cmi grammar_typecheck.cmi \
+    grammar_pp.cmo grammar_parser.cmi grammar_lexer.cmo global_option.cmo \
+    embed_pp.cmi defns.cmi bounds.cmi auxl.cmo
+main.cmx : version.cmx types.cmx term_parser.cmx system_pp.cmx substs_pp.cmx \
+    new_term_parser.cmx location.cmx lexyac_pp.cmx grammar_typecheck.cmx \
+    grammar_pp.cmx grammar_parser.cmx grammar_lexer.cmx global_option.cmx \
+    embed_pp.cmx defns.cmx bounds.cmx auxl.cmx
+align.cmi : types.cmo
+bounds.cmi : types.cmo location.cmo
+coq_induct.cmi : types.cmo
+defns.cmi : types.cmo
+dependency.cmi : types.cmo
+embed_pp.cmi : types.cmo
+grammar_typecheck.cmi : types.cmo
+merge.cmi : types.cmo
+subrules_pp.cmi : types.cmo
+substs_pp.cmi : types.cmo
+system_pp.cmi : types.cmo
+lexyac_pp.cmi : types.cmo
+transform.cmi : types.cmo
+term_parser.cmi : types.cmo
