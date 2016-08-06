@@ -11,7 +11,7 @@ G, x : A |- t : B
 G |- \x:A.t : A -> B
 ```
 
-Unfortunately, Ott does not prove any means of giving a Tex version of
+Unfortunately, Ott does not provide any means of giving a Tex version of
 the name "Fun". 
 
 Given the previous rule Ott would generate the following LaTex
