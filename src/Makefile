@@ -54,9 +54,9 @@ DVIPDFM		= dvipdfm
 COQC            = coqc
 COQ_INCLUDE     = -I $(topdir)/coq
 COQ_FLAGS       =
-OCAMLGRAPHDIRBODY = ocamlgraph-1.7
+OCAMLGRAPHDIRBODY = ocamlgraph-1.8.7
 OCAMLGRAPHDIR = ../$(OCAMLGRAPHDIRBODY)
-OCAMLGRAPHTARGZ	= ocamlgraph-1.7.tar.gz
+OCAMLGRAPHTARGZ	= ocamlgraph-1.8.7.tar.gz
 LIBRARIES	= str $(OCAMLGRAPHDIR)/graph
 
 # DO NOT EDIT BELOW THIS LINE ###########################################
