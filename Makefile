@@ -36,7 +36,7 @@
 
 
 world:
-	cd src; $(MAKE) install
+	cd src; $(MAKE)
 
 world.byt:
 	cd src; $(MAKE) install.byt

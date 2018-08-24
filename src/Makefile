@@ -54,9 +54,9 @@ DVIPDFM		= dvipdfm
 COQC            = coqc
 COQ_INCLUDE     = -I $(topdir)/coq
 COQ_FLAGS       =
-OCAMLGRAPHDIRBODY = ocamlgraph-1.8.7
+OCAMLGRAPHDIRBODY = ocamlgraph
 OCAMLGRAPHDIR = ../$(OCAMLGRAPHDIRBODY)
-OCAMLGRAPHTARGZ	= ocamlgraph-1.8.7.tar.gz
+OCAMLGRAPHTARGZ	= ocamlgraph.tar.gz
 LIBRARIES	= str $(OCAMLGRAPHDIR)/graph
 
 # DO NOT EDIT BELOW THIS LINE ###########################################
@@ -218,7 +218,7 @@ version.tex: tmp_date.txt version_src.tex
 ## Rules to unpack and build our copy of ocamlgraph.
 $(OCAMLGRAPHDIR)/Makefile:
 	cd .. && tar -zxvf $(OCAMLGRAPHTARGZ)
-	cd $(OCAMLGRAPHDIR) && ./configure
+	cd $(OCAMLGRAPHDIR) && autoconf && ./configure
 $(OCAMLGRAPHDIR)/graph.cma: $(OCAMLGRAPHDIR)/Makefile
 	cd $(OCAMLGRAPHDIR) && $(MAKE) graph.cma
 $(OCAMLGRAPHDIR)/graph.cmxa: $(OCAMLGRAPHDIR)/Makefile
@@ -246,6 +246,7 @@ coq-lib:
 # CLEANUP ##############################################################
 
 clean:
+	rm -rf ocamlgraph
 	rm -f *~ *.cmi *.cmo *.cmx *.o 
 	rm -f grammar_lexer.ml grammar_parser.ml 			\
               grammar_parser.mli grammar_parser.output 
