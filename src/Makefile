@@ -234,9 +234,6 @@ install.byt: $(OCAMLGRAPHDIR)/graph.cma
 
 install: $(OCAMLGRAPHDIR)/graph.cmxa
 	$(MAKE) opt
-	cp ./ott ../bin/ott
-
-
 
 # LIBRARY ##############################################################
 
