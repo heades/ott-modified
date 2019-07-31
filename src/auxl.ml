@@ -191,7 +191,7 @@ let char_list_of_string s =
   let rec f i = if i=n then [] else String.get s i :: f (i+1) in
   f 0
 
-let string_of_char_list ts =
+let string_of_char_list (ts : char list) : string =
   let n = List.length ts in
   let s = String.create n in
   let rec f i ts = 
@@ -200,7 +200,7 @@ let string_of_char_list ts =
     | t::ts -> String.set s i t; f (i+1) ts
   in 
   f 0 ts; 
-  s
+  Bytes.to_string s
 
 (* tests to identify strings *)
 
@@ -1827,10 +1827,10 @@ let dump_structure_fn str =
 
 (* reading a whole file in as a string *)
  
-let string_of_filename filename =
+let string_of_filename (filename : string) : string =
   let ic = open_in filename in
   let _ = set_binary_mode_in ic true in
   let len = in_channel_length ic in
   let buff = String.create len  in
   let _ = really_input ic buff 0 len in
-  buff
+  Bytes.to_string buff
