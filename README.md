@@ -1,6 +1,8 @@
 Modified Ott 0.25
 -----------------
 
+**Note: This repo is no longer maintained please use this repo instead: [https://github.com/heades/ott](https://github.com/heades/ott).**
+
 Originally, Ott did not allow one to easily rename an inference rule
 in Tex.  For example, in an Ott specification one might define a rule
 like the following:
